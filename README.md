@@ -33,6 +33,8 @@ The basic syntax for a profile:
 ```cpp
 PROFILE( profile_name, group_name, fixture, { code_to_profile })
 ```
+Profiles are divided into groups. A group is a kind of functionality you want to profile.
+
 Use START_TIMER and END_TIMER to indicate the code inside the loop to be timed:
 ```cpp
 PROFILE( profile_name, group_name, fixture, {
