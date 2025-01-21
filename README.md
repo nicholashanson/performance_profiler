@@ -28,6 +28,7 @@ The constructor of the fixture will be called before each run, so any set-up sho
 They can be accessed inside the profiled code with fx.variable_name.
 
 (3) Define a profile
+
 The basic syntax for a profile:
 ```cpp
 PROFILE( profile_name, group_name, fixture, { code_to_profile })
