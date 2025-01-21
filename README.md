@@ -8,7 +8,7 @@ Easy-to-use library for pofiling C++.
 ```cpp
 #include <performance_profile.hpp>
 ```
-Define a fixutre to use in the profile.
+(2) Define a fixture
 ```cpp
 struct f: profiler::fixture<100, 10> {
   f() : ...
@@ -16,12 +16,17 @@ struct f: profiler::fixture<100, 10> {
   [ variables ]
 }
 ```
-(2) Define a fixture
+Define a fixutre to use in the profile.
+
 The fixture inherits from the base fixture profiler::fixture.
-<100, 10> indicates that the profile should be run for a total 10 runs of 100 iterations each.
+
+The template arguments <100, 10> indicates that the profile should be run for a total 10 runs of 100 iterations each.
+
 The constructor of the fixture will be called before each run, so any set-up should be included here.
+
 [ varaibles ] are any variables that need to be accessed by profiled code. They persist for the duration of a run.
-They can be accessed inside the profiled code with fx.<variable>.
+They can be accessed inside the profiled code with fx.variable_name.
+
 (3) Define a profile
 The basic syntax for a profile:
 ```cpp
