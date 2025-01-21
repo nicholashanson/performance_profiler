@@ -6,6 +6,7 @@ Include the header file:
 
 ```cpp
 #include <performance_profile.hpp>
+```
 
 Define a fixutre to use in the profile.
 
@@ -15,7 +16,9 @@ struct f: profiler::fixture<100, 10> {
 
   [ variables ]
 }
+```
 
 ```cpp
 PROFILE( profile_name, group_name, fixture, { code_to_profile })
+```
 
