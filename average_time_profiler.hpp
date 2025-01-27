@@ -1,5 +1,5 @@
-#ifndef PROGILE_AVG
-#define PROFILE_AVG
+#ifndef PROGILE_AVG_HPP
+#define PROFILE_AVG_HPP
 
 #include <string>
 
