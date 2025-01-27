@@ -1,3 +1,6 @@
+#ifndef PROFILE_HPP
+#define PROFILE_HPP
+
 #include <string>
 
 namespace profiler {    
@@ -33,7 +36,6 @@ namespace profiler {
         
             for ( size_t i = 0; i < Fixture::iterations_; ++i ) {
                 double time = iterate_once( fx, ca );
-                std::cout << time << std::endl;
                 run.push_back( time );
             }
         }
@@ -43,21 +45,17 @@ namespace profiler {
 
         for ( size_t i = 0; i < Fixture::iterations_; ++i ) {
 
-            std::cout << "calculating average times" << std::endl;
-        
             average_times.push_back(
                 std::accumulate( results.begin(), results.end(), 0.0,
                     [i]( double sum, const std::vector<double>& vec ) {
                         return sum + vec[ i ];
                     }) / results.size()
             );
-
-            std::cout << average_times[ i ] << std::endl;
         }
 
         profile_manager::instance().add_result( profile_name, group_name, average_times );
-
-        std::cout << "finished handling profile" << std::endl;
     }
 
 } // profiler
+
+#endif

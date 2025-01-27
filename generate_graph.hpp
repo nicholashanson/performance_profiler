@@ -1,3 +1,6 @@
+#ifndef GENERATE_GRAPH_HPP
+#define GENERATE_GRAPH_HPP
+
 #include <string>
 #include <vector>
 #include <fstream>
@@ -47,3 +50,5 @@ namespace profiler {
     }
 
 } // profiler
+
+#endif

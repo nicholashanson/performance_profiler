@@ -1,3 +1,6 @@
+#ifndef FIXTURE_HPP
+#define FIXTURE_HPP
+
 namespace profiler {    
     
     template<size_t iterations = 1, size_t runs = 1>
@@ -14,3 +17,5 @@ namespace profiler {
     size_t fixture<iterations, runs>::runs_ = runs;
 
 } // profiler
+
+#endif

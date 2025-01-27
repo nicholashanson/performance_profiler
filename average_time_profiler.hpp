@@ -1,3 +1,6 @@
+#ifndef PROGILE_AVG
+#define PROFILE_AVG
+
 #include <string>
 
 namespace profiler {
@@ -52,3 +55,5 @@ namespace profiler {
     }
 
 } // profiler
+
+#endif

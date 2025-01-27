@@ -19,31 +19,48 @@
 #include "profiler.hpp"
 #include "generate_graph.hpp"
 
-namespace profiler {
+#define START_TIMER start_time = std::chrono::high_resolution_clock::now();
+#define END_TIMER end_time = std::chrono::high_resolution_clock::now();
 
-    #define START_TIMER start_time = std::chrono::high_resolution_clock::now();
-    #define END_TIMER end_time = std::chrono::high_resolution_clock::now();
+#define PROFILE_AVG( profile_name, group_name, fixture, lambda_body )           \
+const bool profile_name##_profile_init = []() {                                 \
+    profiler::handle_profile_avg<fixture>( #profile_name, #group_name,          \
+        []( auto& fx, auto& start_time, auto& end_time ) lambda_body );         \
+    return true;                                                                \
+}();
 
-    #define PROFILE_AVG( profile_name, group_name, fixture, lambda_body )           \
-    const bool profile_name##_profile_init = []() {                                 \
-        profiler::handle_profile_avg<fixture>( #profile_name, #group_name,          \
-            []( auto& fx, auto& start_time, auto& end_time ) lambda_body );         \
-        return true;                                                                \
-    }();
+#define PROFILE( profile_name, group_name, fixture, lambda_body )               \
+const bool profile_name##_profile_init = []() {                                 \
+    profiler::handle_profile<fixture>( #profile_name, #group_name,              \
+        []( auto& fx, auto& start_time, auto& end_time ) lambda_body );         \
+    return true;                                                                \
+}();
 
-    #define PROFILE( profile_name, group_name, fixture, lambda_body )               \
-    const bool profile_name##_profile_init = []() {                                 \
-        profiler::handle_profile<fixture>( #profile_name, #group_name,              \
-            []( auto& fx, auto& start_time, auto& end_time ) lambda_body );         \
-        return true;                                                                \
-    }();
+#define PROFILE_BASE( profile_name, group_name, fixture, lambda_body )          \
+const bool profile_name##_profile_init = []() {                                 \
+    profiler::handle_profile_base<fixture>( #profile_name, #group_name,         \
+        []( auto& fx, auto& start_time, auto& end_time ) lambda_body );         \
+    return true;                                                                \
+}();
 
-    #define GENERATE_GRAPH( group_name )                                            \
-    const bool group_name##_graph_init = []() {                                     \
-        profiler::generate_graph( #group_name );                                    \
-        return true;                                                                \
-    }();
-}
+#define PROFILE_SU( profile_name, group_name, fixture, lambda_body )            \
+const bool profile_name##_profile_init = []() {                                 \
+    profiler::handle_profile_su<fixture>( #profile_name, #group_name,           \
+        []( auto& fx, auto& start_time, auto& end_time ) lambda_body );         \
+    return true;                                                                \
+}();
+
+#define GENERATE_GRAPH( group_name )                                            \
+const bool group_name##_graph_init = []() {                                     \
+    profiler::generate_graph( #group_name );                                    \
+    return true;                                                                \
+}();
+
+#define GENERATE_GRAPH_SU( group_name )                                         \
+const bool group_name##_graph_init = []() {                                     \
+    profiler::generate_graph_su( #group_name );                                 \
+    return true;                                                                \
+}();
 
 int main() {
     profiler::profile_manager::instance().print_results();

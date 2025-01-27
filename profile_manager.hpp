@@ -1,3 +1,6 @@
+#ifndef PROFILE_MANAGER_HPP
+#define PROFILE_MANAGER_HPP
+
 #include <iostream>
 #include <set>
 #include <vector>
@@ -69,3 +72,5 @@ namespace profiler {
     };
 
 } // profiler
+
+#endif
