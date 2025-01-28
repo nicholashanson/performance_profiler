@@ -35,7 +35,7 @@ namespace profiler {
 
             std::cout << "Executing run " << i << "..." << std::endl;
 
-            fixture fx;
+            Fixture fx;
             total_time += run_profile( fx, ca );
         }
 
