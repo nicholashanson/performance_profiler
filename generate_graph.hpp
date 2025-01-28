@@ -9,7 +9,7 @@
 
 namespace profiler {
 
-    void generate_python_script( const std::vector<std::tuple<std::string, std::string, std::vector<double>>>& results ) {
+    inline void generate_python_script( const std::vector<std::tuple<std::string, std::string, std::vector<double>>>& results ) {
 
         std::ofstream python_script( "temp_script.py" );
 
@@ -40,7 +40,7 @@ namespace profiler {
         int result = system("py temp_script.py");
     }
 
-    void generate_graph( const std::string& group_name ) {
+    inline void generate_graph( const std::string& group_name ) {
 
         std::vector<std::tuple<std::string, std::string, std::vector<double>>> results;
 
