@@ -73,10 +73,14 @@ const bool group_name##_graph_init = []() {                                     
     return true;                                                                \
 }();
 
+#ifdef PERFORMANCE_PROFILE_MAIN
+
 int main() {
     profiler::profile_manager::instance().print_results();
 
     return 0;
 }
+
+#endif
 
 #endif

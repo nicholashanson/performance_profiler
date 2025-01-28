@@ -1,3 +1,4 @@
+#define PERFORMANCE_PROFILE_MAIN
 #include "performance_profile.hpp"
 
 struct f : profiler::base_fixture<1,1> {
