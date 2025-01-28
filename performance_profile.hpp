@@ -22,6 +22,17 @@
 #define START_TIMER start_time = std::chrono::high_resolution_clock::now();
 #define END_TIMER end_time = std::chrono::high_resolution_clock::now();
 
+namespace profiler {
+
+    template<typename Fixture, typename Callable>
+    bool profile_avg( const std::string& profile_name, const std::string& group_name, Callable&& ca ) {
+
+        handle_profile_avg<Fixture>( profile_name, group_name, std::forward<Callable>( ca ) );
+        return true;
+    }
+
+}
+
 #define PROFILE_AVG( profile_name, group_name, fixture, lambda_body )           \
 const bool profile_name##_profile_init = []() {                                 \
     profiler::handle_profile_avg<fixture>( #profile_name, #group_name,          \
