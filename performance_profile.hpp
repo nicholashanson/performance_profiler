@@ -34,7 +34,7 @@ namespace profiler {
 }
 
 #define PROFILE_AVG( profile_name, group_name, fixture, lambda_body )           \
-const bool profile_name##_profile_init = []() {                                 \
+const bool profile_name##_##group_name##_profile_init = []() {                  \
     profiler::handle_profile_avg<fixture>( #profile_name, #group_name,          \
         []( auto& fx, auto& start_time, auto& end_time ) lambda_body );         \
     return true;                                                                \

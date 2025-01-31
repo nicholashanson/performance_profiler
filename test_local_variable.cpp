@@ -1,15 +1,14 @@
-#define PERFORMANCE_PROFILE_MAIN
 #include "performance_profile.hpp"
 
-struct f : profiler::base_fixture<1,1> {
+struct lv_fixture : profiler::base_fixture<1,1> {
 
-    f() : counter(0) {
+    lv_fixture() : counter(0) {
     }
 
     size_t counter;
 };
 
-PROFILE_AVG( use_macro, count_to_1000, f, {
+PROFILE_AVG( use_macro, count_to_1000, lv_fixture, {
 
     START_TIMER
     for ( size_t i = 0; i < 1000; ++i )
@@ -17,11 +16,10 @@ PROFILE_AVG( use_macro, count_to_1000, f, {
     END_TIMER
 })
 
-const bool profile_initialized = profiler::profile_avg<f>(
+const bool profile_initialized = profiler::profile_avg<lv_fixture>(
     "use_function_template",
-    "count_to_100",
+    "count_to_1000",
     []( auto& fx, auto& start_time, auto& end_time ) {
-        size_t c{};
         START_TIMER
         for ( size_t i = 0; i < 1000; ++i )
             fx.counter;
