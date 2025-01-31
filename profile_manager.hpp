@@ -2,6 +2,7 @@
 #define PROFILE_MANAGER_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <set>
 #include <vector>
 
@@ -32,7 +33,20 @@ namespace profiler {
                 for (const auto& [ profile_name, group_name, avg_time_ ] : avg_time | std::views::filter([ & ]( const auto& result ) {
                         return std::get<1>( result ) == group_name_;
                     })) {
-                        std::cout << "{ " << avg_time_ << " us } " << profile_name << "\n";
+
+                        std::string unit = "us";
+
+                        double scaled_time = avg_time_;
+
+                        if ( avg_time_ >= 100'000 ) {       // more than 100 milliseconds
+                            unit = "s";
+                            scaled_time /= 1'000'000.0;     // convert to seconds
+                        } else if ( avg_time_ >= 100 ) {    // more than 100 microseconds but less than 100 milliseconds
+                            unit = "ms";
+                            scaled_time /= 1'000.0;         // convert to milliseconds
+                        }
+
+                        std::cout << "{ "  << scaled_time <<  " " << unit << " } " << profile_name << "\n";
                 }
 
                 std::cout << std::endl;
