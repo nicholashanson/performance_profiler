@@ -46,7 +46,7 @@ namespace profiler {
                             scaled_time /= 1'000.0;         // convert to milliseconds
                         }
 
-                        std::cout << "{ " << std::fixed << std::setprecision(1) << scaled_time <<  " " << unit << " } " << profile_name << "\n";
+                        std::cout << "{ " << std::fixed << std::setprecision(2) << scaled_time <<  " " << unit << " } " << profile_name << "\n";
                 }
 
                 std::cout << std::endl;
