@@ -1,8 +1,8 @@
 #ifndef PROFILE_MANAGER_HPP
 #define PROFILE_MANAGER_HPP
 
-#ifndef PERFORMANCE_PRECISION
-#define PERFORMANCE_PRECISION 2
+#ifndef PROFILE_PRECISION
+#define PROFILE_PRECISION 2
 #endif
 
 #include <iostream>
@@ -50,7 +50,7 @@ namespace profiler {
                             scaled_time /= 1'000.0;         // convert to milliseconds
                         }
 
-                        std::cout << "{ " << std::fixed << std::setprecision( PERFORMANCE_PRECISION ) << scaled_time <<  " " << unit << " } " << profile_name << "\n";
+                        std::cout << "{ " << std::fixed << std::setprecision( PROFILE_PRECISION ) << scaled_time <<  " " << unit << " } " << profile_name << "\n";
                 }
 
                 std::cout << std::endl;
