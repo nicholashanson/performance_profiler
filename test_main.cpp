@@ -3,3 +3,4 @@
 
 #include "test_local_variable.cpp"
 #include "test_non_unique_profile_name.cpp"
+#include "test_generate_graph.cpp"
