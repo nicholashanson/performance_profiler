@@ -26,10 +26,10 @@ namespace profiler {
 
             python_script << profile_name << "= [ ";
 
-            for ( size_t i = 0; i < avg_times.size() - 1; ++i )
+            for ( size_t i = 0; i < avg_times.size() - 1; ++i ) 
                 python_script << avg_times[ i ] << ", ";
 
-            python_script << avg_times[ avg_times.size() ] << " ]" << std::endl;
+            python_script << avg_times[ avg_times.size() - 1 ] << " ]" << std::endl;
 
             python_script << "plt.plot( x, " << profile_name << " , label = '" << profile_name << "' )" << std::endl;
         }
