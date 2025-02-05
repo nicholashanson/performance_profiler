@@ -34,6 +34,8 @@ namespace profiler {
             python_script << "plt.plot( x, " << profile_name << " , label = '" << profile_name << "' )" << std::endl;
         }
 
+        python_script << "plt.legend()" << std::endl;
+
         python_script << "plt.savefig( 'performance_" << std::get<1>( results[ 0 ] ) << ".png' )";
         python_script.close();
 
