@@ -55,10 +55,10 @@ namespace profiler {
 
         profile_manager::instance().add_result( profile_name, group_name, average_times );
 
-        double avg_time = std::accumulate( avg_times.begin(), avg_times.end(), 0.0, 
+        double avg_time = std::accumulate( average_times.begin(), average_times.end(), 0.0, 
             []( double sum, double time ) {
                 return sum + time;
-            }) / avg_times.size();
+            }) / average_times.size();
 
         profile_manager::instance().add_result( profile_name, group_name, avg_time );
     }
