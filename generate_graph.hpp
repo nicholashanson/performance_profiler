@@ -36,7 +36,9 @@ namespace profiler {
 
         python_script << "plt.legend()" << std::endl;
 
-        python_script << "plt.savefig( 'performance_profiling/graphs/performance_" << std::get<1>( results[ 0 ] ) << ".png' )";
+        python_script << "os.makedirs( 'performance_profiling/graphs', exist_ok = True )" << std::endl;
+
+        python_script << "plt.savefig( os.path.join( 'performance_profiling/graph', '" << std::get<1>( results[ 0 ] ) << ".png' ) )";
         python_script.close();
 
         int result = system("py temp_script.py");
