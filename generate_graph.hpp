@@ -15,6 +15,7 @@ namespace profiler {
 
         python_script << "import numpy as np" << std::endl;
         python_script << "import matplotlib.pyplot as plt" << std::endl;
+        python_script << "import os" << std::endl;
 
         python_script << "x = np.array( [ x for x in range( 1, " << std::get<2>( results[ 0 ] ).size() + 1 << " ) ] )" << std::endl;
 
