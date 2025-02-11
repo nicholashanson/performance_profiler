@@ -13,6 +13,10 @@ namespace profiler {
 
         std::ofstream python_script( "temp_script.py" );
 
+        python_script << "import seaborn as sns" << std::endl;
+
+        python_script << "sns.set( style = 'whitegrid' )" << std::endl;
+
         python_script << "import numpy as np" << std::endl;
         python_script << "import matplotlib.pyplot as plt" << std::endl;
         python_script << "import os" << std::endl;
