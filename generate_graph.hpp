@@ -41,6 +41,9 @@ namespace profiler {
 
         python_script << "plt.legend()" << std::endl;
 
+        python_script << "plt.ylabel( 'execution time ( micro-seconds )' )" << std::endl;
+        python_script << "plt.xlabel( 'nth iteration' )" << std::endl;
+
         python_script << "os.makedirs( 'performance_profiling/graphs', exist_ok = True )" << std::endl;
 
         python_script << "plt.savefig( 'performance_profiling/graphs/performance_" << std::get<1>( results[ 0 ] ) << ".png' )";
